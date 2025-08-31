@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>EcoPulse — Sustainable Rewards</title>
+  <meta name="description" content="EcoPulse turns eco‑friendly actions into real rewards. Earn points and redeem with partners across the UAE."/>
+  <!-- Social previews -->
+  <meta property="og:title" content="EcoPulse — Sustainable Rewards">
+  <meta property="og:description" content="Turn eco actions into real rewards. Earn points and redeem with partners across the UAE.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:,">
+
+  <!-- Tailwind via CDN with forms & typography plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    /* frosted glass effect for header */
+    .glass { backdrop-filter: saturate(180%) blur(6px); background: rgba(255,255,255,.86); }
+    .nav a.active { color: #0f172a; }
+    /* accessible skip link */
+    .skip-link { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip-link:focus { position:static; width:auto; height:auto; padding:.5rem .75rem; background:#111827; color:#fff; border-radius:.5rem; }
+
+    /* ensure sections don't hide beneath sticky header */
+    section { scroll-margin-top: 96px; }
+
+    /* top progress bar styling */
+    #pageProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg,#10b981,#14b8a6);
+      z-index: 60;
+      transition: width .15s linear;
+    }
+
+    /* focus styles for nav links */
+    .nav a:focus {
+      outline: 2px solid #10b981;
+      outline-offset: 2px;
+      border-radius: .5rem;
+    }
+  </style>
+</head>
+<body class="text-slate-800 bg-white">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <!-- Top progress bar for scroll indication -->
+  <div id="pageProgress" aria-hidden="true"></div>
+
+  <!-- HEADER / NAV -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-lg">
+        <span class="h-8 w-8 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-500"></span>
+        <span class="font-semibold">EcoPulse</span>
+      </a>
+      <nav class="nav hidden md:flex items-center gap-2 text-sm text-slate-600">
+        <a href="#hero" data-nav="home" class="px-3 py-2 rounded-xl hover:text-slate-900">Home</a>
+        <a href="#app" data-nav="app" class="px-3 py-2 rounded-xl hover:text-slate-900">App</a>
+        <a href="#how" data-nav="how" class="px-3 py-2 rounded-xl hover:text-slate-900">How It Works</a>
+        <a href="#rewards" data-nav="rewards" class="px-3 py-2 rounded-xl hover:text-slate-900">Rewards</a>
+        <a href="#partners" data-nav="partners" class="px-3 py-2 rounded-xl hover:text-slate-900">Partners</a>
+        <a href="#stories" data-nav="stories" class="px-3 py-2 rounded-xl hover:text-slate-900">Stories</a>
+        <a href="#faq" data-nav="faq" class="px-3 py-2 rounded-xl hover:text-slate-900">FAQ</a>
+        <a href="#contact" data-nav="contact" class="px-3 py-2 rounded-xl hover:text-slate-900">Contact</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <!-- Language toggle for desktop -->
+        <button id="langToggle" class="hidden md:inline-flex px-3 py-2 rounded-xl text-sm border border-slate-300 hover:bg-slate-50" aria-label="Switch language">العربية</button>
+        <!-- Primary join CTA -->
+        <button onclick="openJoin()" class="hidden md:inline-flex px-3 py-2 rounded-xl text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700">Join the waitlist</button>
+        <!-- Mobile menu button -->
+        <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100" aria-label="Menu">
+          <svg viewBox="0 0 24 24" class="h-6 w-6"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-3 space-y-1 border-t border-slate-200">
+      <a href="#app" data-nav="app" class="block px-3 py-2 rounded-lg hover:bg-slate-100">App</a>
+      <a href="#how" data-nav="how" class="block px-3 py-2 rounded-lg hover:bg-slate-100">How It Works</a>
+      <a href="#rewards" data-nav="rewards" class="block px-3 py-2 rounded-lg hover:bg-slate-100">Rewards</a>
+      <a href="#partners" data-nav="partners" class="block px-3 py-2 rounded-lg hover:bg-slate-100">Partners</a>
+      <a href="#stories" data-nav="stories" class="block px-3 py-2 rounded-lg hover:bg-slate-100">Stories</a>
+      <a href="#faq" data-nav="faq" class="block px-3 py-2 rounded-lg hover:bg-slate-100">FAQ</a>
+      <a href="#contact" data-nav="contact" class="block px-3 py-2 rounded-lg hover:bg-slate-100">Contact</a>
+      <!-- Language toggle for mobile -->
+      <button id="langToggleMobile" class="block w-full px-3 py-2 rounded-lg hover:bg-slate-100 text-left">العربية</button>
+      <button onclick="openJoin()" class="w-full text-left px-3 py-2 rounded-lg bg-emerald-600 text-white">Join the waitlist</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative py-16 md:py-24 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 id="hero-headline" class="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900">Empowering a greener future</h1>
+          <p data-hero-sub class="mt-4 text-slate-600 leading-relaxed">
+            Join EcoPulse and turn everyday eco actions into tangible rewards. Carpool, drive electric, or reduce home energy and start earning today.
+          </p>
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <button data-join onclick="openJoin()" class="px-5 py-3 rounded-xl text-white font-semibold bg-emerald-600 hover:bg-emerald-700 text-center">Join the waitlist</button>
+            <a data-see href="#app" class="px-5 py-3 rounded-xl border border-slate-300 font-semibold hover:bg-slate-50 text-center">See the App</a>
+          </div>
+          <!-- Impact metrics strip -->
+          <div class="mt-6 grid grid-cols-3 gap-3 text-center">
+            <div class="rounded-xl border border-emerald-100 bg-white/60 py-3">
+              <div class="text-xl font-semibold">12,540</div>
+              <div class="text-xs text-slate-500">kg CO₂ saved</div>
+            </div>
+            <div class="rounded-xl border border-emerald-100 bg-white/60 py-3">
+              <div class="text-xl font-semibold">3,212</div>
+              <div class="text-xs text-slate-500">redemptions</div>
+            </div>
+            <div class="rounded-xl border border-emerald-100 bg-white/60 py-3">
+              <div class="text-xl font-semibold">87</div>
+              <div class="text-xs text-slate-500">partners</div>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <!-- Do not hide the container if the image fails to load. Instead, leave the broken image visible so users know something is missing. -->
+          <img src="assets/visily/screens/screen-01.png" alt="EcoPulse app dashboard" loading="lazy" class="w-full h-auto" />
+        </div>
+      </div>
+    </section>
+
+    <!-- APP PREVIEW SECTION -->
+    <section id="app" class="bg-slate-50 py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="max-w-2xl mx-auto text-center">
+          <p class="text-xs tracking-widest text-emerald-600 font-semibold uppercase">EcoPulse App</p>
+          <h2 class="mt-2 text-2xl md:text-3xl font-semibold text-slate-900">Dashboard • Earn • Redeem</h2>
+          <p class="mt-3 text-slate-600">Submit your eco actions, track your impact and points, and redeem rewards all in one place.</p>
+        </div>
+        <div class="mt-10 grid md:grid-cols-2 gap-6">
+          <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <img data-inline="1" src="assets/visily/screens/screen-02.png" alt="EcoPulse earn flow" loading="lazy" onerror="this.src='assets/visily/screens/screen-01.png'" class="w-full h-auto"/>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <img data-inline="2" src="assets/visily/screens/screen-03.png" alt="EcoPulse redeem flow" loading="lazy" onerror="this.src='assets/visily/screens/screen-02.png'" class="w-full h-auto"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section id="how" class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <div class="max-w-2xl mx-auto text-center">
+            <p class="text-xs tracking-widest text-emerald-600 font-semibold uppercase">How It Works</p>
+            <h2 class="mt-2 text-2xl md:text-3xl font-semibold text-slate-900">A simple path to sustainable rewards</h2>
+            <p class="mt-3 text-slate-600">EcoPulse simplifies your journey to a greener lifestyle. Whether you’re an individual or a business, follow these steps to make a positive impact.</p>
+          </div>
+          <div class="mt-10 grid lg:grid-cols-6 gap-6">
+            <!-- Individuals timeline -->
+            <div class="lg:col-span-3 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+              <h3 class="text-lg font-semibold text-emerald-600">For Individuals</h3>
+              <ol class="mt-4 space-y-4">
+                <li class="flex items-start">
+                  <span class="flex-none h-8 w-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold mr-3">1</span>
+                  <div><strong>Sign Up & Earn Points</strong><br/><span class="text-sm text-slate-600">Create your free account and start participating in eco‑friendly activities and challenges to collect points.</span></div>
+                </li>
+                <li class="flex items-start">
+                  <span class="flex-none h-8 w-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold mr-3">2</span>
+                  <div><strong>Redeem Rewards</strong><br/><span class="text-sm text-slate-600">Browse our catalogue and exchange your points for exclusive products and experiences from sustainable brands.</span></div>
+                </li>
+                <li class="flex items-start">
+                  <span class="flex-none h-8 w-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold mr-3">3</span>
+                  <div><strong>Make a Real Difference</strong><br/><span class="text-sm text-slate-600">Every action you take contributes to a greener UAE. Watch your impact grow over time.</span></div>
+                </li>
+              </ol>
+            </div>
+            <!-- Businesses timeline -->
+            <div class="lg:col-span-3 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+              <h3 class="text-lg font-semibold text-emerald-600">For Businesses</h3>
+              <ol class="mt-4 space-y-4">
+                <li class="flex items-start">
+                  <span class="flex-none h-8 w-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold mr-3">1</span>
+                  <div><strong>Partner with Us</strong><br/><span class="text-sm text-slate-600">Join the EcoPulse network to reach eco‑conscious customers and highlight your sustainable initiatives.</span></div>
+                </li>
+                <li class="flex items-start">
+                  <span class="flex-none h-8 w-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold mr-3">2</span>
+                  <div><strong>Offer Sustainable Rewards</strong><br/><span class="text-sm text-slate-600">Promote your green products or services as rewards, driving loyalty and brand affinity.</span></div>
+                </li>
+                <li class="flex items-start">
+                  <span class="flex-none h-8 w-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold mr-3">3</span>
+                  <div><strong>Engage & Grow</strong><br/><span class="text-sm text-slate-600">Connect with a community that values sustainability and watch your business thrive.</span></div>
+                </li>
+              </ol>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- REWARDS SECTION -->
+    <section id="rewards" class="py-16 md:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="max-w-2xl mx-auto text-center">
+          <p class="text-xs tracking-widest text-emerald-600 font-semibold uppercase">Rewards Catalogue</p>
+          <h2 class="mt-2 text-2xl md:text-3xl font-semibold text-slate-900">Redeem on brands you love</h2>
+          <p class="mt-3 text-slate-600">Choose from eco‑friendly products and experiences curated just for you. Earn points, redeem instantly.</p>
+        </div>
+        <!-- Reward cards grid -->
+        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="p-5 rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <div class="font-semibold">Reusable Water Bottle</div>
+            <p class="text-sm text-slate-600 mt-2">Stay hydrated sustainably • 150 pts</p>
+            <button class="mt-4 px-3 py-2 rounded-xl text-white bg-emerald-600 hover:bg-emerald-700 text-sm w-full">Redeem</button>
+          </div>
+          <div class="p-5 rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <div class="font-semibold">Organic Cotton Tote Bag</div>
+            <p class="text-sm text-slate-600 mt-2">Perfect for groceries • 100 pts</p>
+            <button class="mt-4 px-3 py-2 rounded-xl text-white bg-emerald-600 hover:bg-emerald-700 text-sm w-full">Redeem</button>
+          </div>
+          <div class="p-5 rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <div class="font-semibold">Bamboo Cutlery Set</div>
+            <p class="text-sm text-slate-600 mt-2">Your eco dining kit • 80 pts</p>
+            <button class="mt-4 px-3 py-2 rounded-xl text-white bg-emerald-600 hover:bg-emerald-700 text-sm w-full">Redeem</button>
+          </div>
+          <div class="p-5 rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <div class="font-semibold">Sustainable Travel Kit</div>
+            <p class="text-sm text-slate-600 mt-2">Travel light & green • 200 pts</p>
+            <button class="mt-4 px-3 py-2 rounded-xl text-white bg-emerald-600 hover:bg-emerald-700 text-sm w-full">Redeem</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS SECTION -->
+    <section id="partners" class="py-16 md:py-24 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="max-w-2xl mx-auto text-center">
+          <p class="text-xs tracking-widest text-emerald-600 font-semibold uppercase">Partnerships</p>
+          <h2 class="mt-2 text-2xl md:text-3xl font-semibold text-slate-900">Join the sustainability movement</h2>
+          <p class="mt-3 text-slate-600">We work with retailers, cafés, gyms, mobility and energy companies across the Middle East to drive a greener future.</p>
+        </div>
+        <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 items-center">
+          <div class="h-12 rounded-xl border border-slate-200 bg-white flex items-center justify-center text-slate-400 text-xs">Green Oasis</div>
+          <div class="h-12 rounded-xl border border-slate-200 bg-white flex items-center justify-center text-slate-400 text-xs">Solar Solutions</div>
+          <div class="h-12 rounded-xl border border-slate-200 bg-white flex items-center justify-center text-slate-400 text-xs">EcoRide</div>
+          <div class="h-12 rounded-xl border border-slate-200 bg-white flex items-center justify-center text-slate-400 text-xs">PureWater Co.</div>
+          <div class="h-12 rounded-xl border border-slate-200 bg-white flex items-center justify-center text-slate-400 text-xs">Green Tech</div>
+          <div class="h-12 rounded-xl border border-slate-200 bg-white flex items-center justify-center text-slate-400 text-xs">CleanGym</div>
+        </div>
+        <div class="mt-8 text-center">
+          <button onclick="openPartner()" class="px-4 py-2 rounded-xl bg-slate-900 text-white font-semibold">Become a partner</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="stories" class="py-16 md:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="max-w-2xl mx-auto text-center">
+          <p class="text-xs tracking-widest text-emerald-600 font-semibold uppercase">Voices of a Greener UAE</p>
+          <h2 class="mt-2 text-2xl md:text-3xl font-semibold text-slate-900">What our users say</h2>
+        </div>
+        <div class="mt-10 grid md:grid-cols-3 gap-5">
+          <figure class="rounded-2xl border border-slate-200 p-5 bg-white">
+            <blockquote class="text-slate-700">“I never realized how much CO₂ I saved by carpooling until EcoPulse showed me—and the rewards are legit.”</blockquote>
+            <figcaption class="mt-3 text-sm text-slate-500">— R.M., Dubai Marina</figcaption>
+          </figure>
+          <figure class="rounded-2xl border border-slate-200 p-5 bg-white">
+            <blockquote class="text-slate-700">“Redeemed two coffee vouchers after uploading my DEWA bill. Super quick.”</blockquote>
+            <figcaption class="mt-3 text-sm text-slate-500">— A.S., Business Bay</figcaption>
+          </figure>
+          <figure class="rounded-2xl border border-slate-200 p-5 bg-white">
+            <blockquote class="text-slate-700">“Our gym saw new members via EcoPulse. Great concept for local partners.”</blockquote>
+            <figcaption class="mt-3 text-sm text-slate-500">— M.G., Partner Gym Manager</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="max-w-2xl mx-auto text-center">
+          <p class="text-xs tracking-widest text-emerald-600 font-semibold uppercase">FAQ</p>
+          <h2 class="mt-2 text-2xl md:text-3xl font-semibold text-slate-900">Frequently asked questions</h2>
+        </div>
+        <div class="mt-8 grid md:grid-cols-2 gap-4">
+          <div class="p-5 rounded-2xl border border-slate-200">
+            <div class="font-semibold">What is EcoPulse?</div>
+            <p class="mt-2 text-sm text-slate-600">EcoPulse is a sustainability rewards platform that encourages and rewards users for making environmentally friendly choices in their daily lives across the Middle East.</p>
+          </div>
+          <div class="p-5 rounded-2xl border border-slate-200">
+            <div class="font-semibold">How does it work?</div>
+            <p class="mt-2 text-sm text-slate-600">Sign up, track your sustainable activities via the app, earn points, and redeem those points for products and experiences from our partners.</p>
+          </div>
+          <div class="p-5 rounded-2xl border border-slate-200">
+            <div class="font-semibold">How do you verify actions?</div>
+            <p class="mt-2 text-sm text-slate-600">We use GPS, photo and EXIF data, distance checks and occasional manual review to ensure your eco actions are authentic.</p>
+          </div>
+          <div class="p-5 rounded-2xl border border-slate-200">
+            <div class="font-semibold">Where are my points stored?</div>
+            <p class="mt-2 text-sm text-slate-600">Points live securely in your EcoPulse account; redemptions are tracked in real time to prevent fraud.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- APP SCREENS GALLERY -->
+    <section id="app-screens" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl sm:text-4xl font-bold">Full App Screens</h2>
+          <p class="mt-2 text-lg text-slate-600">Click a tile to view the full screenshot.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="screenGrid"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-16 md:py-24 bg-slate-50">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 text-center">Get in touch</h2>
+        <form action="#" method="POST" class="mt-8 grid gap-4 max-w-xl mx-auto">
+          <label class="text-sm">Name
+            <input name="name" class="mt-1 w-full rounded-lg border-slate-300" required>
+          </label>
+          <label class="text-sm">Email
+            <input type="email" name="email" class="mt-1 w-full rounded-lg border-slate-300" required>
+          </label>
+          <label class="text-sm">Message
+            <textarea name="message" rows="4" class="mt-1 w-full rounded-lg border-slate-300"></textarea>
+          </label>
+          <button class="px-4 py-2 rounded-xl bg-emerald-600 text-white font-semibold">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row md:items-center justify-between gap-4 text-sm text-slate-600">
+      <div class="flex items-center gap-2">
+        <span class="h-8 w-8 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-500"></span>
+        <span>EcoPulse</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:underline">Privacy</a>
+        <a href="#" class="hover:underline">Terms</a>
+        <span>© <span id="year"></span> EcoPulse</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Waitlist Modal -->
+  <div id="joinModal" class="hidden fixed inset-0 bg-black/40 grid place-items-center p-4">
+    <div class="bg-white rounded-2xl p-6 max-w-md w-full">
+      <h3 class="text-lg font-semibold">Join the EcoPulse waitlist</h3>
+      <form action="#" method="POST" class="mt-4 grid gap-3">
+        <label class="text-sm">Email
+          <input required name="email" type="email" placeholder="you@domain.com" class="mt-1 w-full rounded-lg border-slate-300" />
+        </label>
+        <button class="px-4 py-2 rounded-xl bg-emerald-600 text-white font-semibold">Submit</button>
+      </form>
+      <button class="mt-3 text-sm text-slate-500" onclick="closeJoin()">Close</button>
+    </div>
+  </div>
+  <!-- Partner Modal -->
+  <div id="partnerModal" class="hidden fixed inset-0 bg-black/40 grid place-items-center p-4">
+    <div class="bg-white rounded-2xl p-6 max-w-md w-full">
+      <h3 class="text-lg font-semibold">Become a partner</h3>
+      <form action="#" method="POST" class="mt-4 grid gap-3">
+        <label class="text-sm">Brand
+          <input required name="brand" class="mt-1 w-full rounded-lg border-slate-300" />
+        </label>
+        <label class="text-sm">Category
+          <input required name="category" class="mt-1 w-full rounded-lg border-slate-300" />
+        </label>
+        <label class="text-sm">Contact email
+          <input required name="email" type="email" class="mt-1 w-full rounded-lg border-slate-300" />
+        </label>
+        <button class="px-4 py-2 rounded-xl bg-slate-900 text-white font-semibold">Send</button>
+      </form>
+      <button class="mt-3 text-sm text-slate-500" onclick="closePartner()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    // Close mobile menu on nav link click
+    mobileMenu?.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+    // Scroll progress bar update
+    const progress = document.getElementById('pageProgress');
+    const updateProgress = () => {
+      const doc = document.documentElement;
+      const scrolled = doc.scrollTop || document.body.scrollTop;
+      const height = doc.scrollHeight - doc.clientHeight;
+      progress.style.width = (height ? (scrolled / height) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('load', updateProgress);
+    // Scroll-spy with URL sync and aria-current
+    function initSpy() {
+      const nav = document.querySelector('.nav');
+      if (!nav) return;
+      const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+      const targets = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+      const setActive = (el) => {
+        links.forEach(a => {
+          a.classList.remove('active');
+          a.removeAttribute('aria-current');
+        });
+        const active = links.find(a => document.querySelector(a.getAttribute('href')) === el);
+        if (active) {
+          active.classList.add('active');
+          active.setAttribute('aria-current','page');
+          history.replaceState(null,'', active.getAttribute('href'));
+        }
+      };
+      const io = new IntersectionObserver((entries) => {
+        const visible = entries.filter(e => e.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActive(visible[0].target);
+      }, { rootMargin:'-120px 0px -60% 0px', threshold:[0.1,0.25,0.6] });
+      targets.forEach(el => io.observe(el));
+    }
+    window.addEventListener('load', initSpy);
+    // Update year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Modal handlers
+    function openJoin(){ document.getElementById('joinModal').classList.remove('hidden'); }
+    function closeJoin(){ document.getElementById('joinModal').classList.add('hidden'); }
+    function openPartner(){ document.getElementById('partnerModal').classList.remove('hidden'); }
+    function closePartner(){ document.getElementById('partnerModal').classList.add('hidden'); }
+    // Gallery and inline screen builder (robust loader)
+    // This script attempts to find app screenshots in the assets folder, even if
+    // filenames vary in casing, extension or numbering format. It works under
+    // both file:// and http:// protocols and will never hide containers if
+    // images fail to load.
+    (async () => {
+      const BASE = 'assets/visily/screens/';
+      const MAX_SHOW = 12;
+      // Try these extensions in order for each candidate base name
+      const EXTENSIONS = ['png','PNG','jpg','JPG','webp','WEBP'];
+      // We'll scan screen-1..screen-60 to find up to MAX_SHOW existing files
+      const RANGE = 60;
+      // Selectors for the inline preview images (first and second inline slots)
+      const inlineSelectors = ['#app img[data-inline="1"]', '#app img[data-inline="2"]'];
+      // Helper: check if an image exists by loading it. Returns true if it loads successfully.
+      const exists = (src) => new Promise(res => {
+        const i = new Image();
+        i.onload = () => res(true);
+        i.onerror = () => res(false);
+        i.src = src;
+      });
+      // Generate candidate filenames for a given number (e.g. screen-1 vs screen-01)
+      const numberedCandidates = (n) => {
+        const nums = [String(n), String(n).padStart(2,'0')];
+        const list = [];
+        for (const num of nums) {
+          for (const ext of EXTENSIONS) {
+            list.push(`${BASE}screen-${num}.${ext}`);
+          }
+        }
+        return list;
+      };
+      // Discover up to MAX_SHOW screenshots available
+      async function discover() {
+        const found = [];
+        outer: for (let n = 1; n <= RANGE; n++) {
+          for (const candidate of numberedCandidates(n)) {
+            if (await exists(candidate)) {
+              found.push(candidate);
+              // stop after we have MAX_SHOW items
+              if (found.length >= MAX_SHOW) break outer;
+              // once one extension works for this number, skip other extensions
+              break;
+            }
+          }
+        }
+        return found;
+      }
+      const files = await discover();
+      // Assign discovered screenshots to inline preview images
+      inlineSelectors.forEach((sel, idx) => {
+        const el = document.querySelector(sel);
+        if (el && files[idx]) {
+          el.src = files[idx];
+        }
+      });
+      // Build the gallery
+      const grid = document.getElementById('screenGrid');
+      if (grid) {
+        grid.innerHTML = '';
+        if (!files.length) {
+          const p = document.createElement('p');
+          p.className = 'text-center text-slate-500';
+          p.textContent = `No screenshots found under ${BASE}.`; 
+          grid.appendChild(p);
+        } else {
+          files.forEach((src) => {
+            const a = document.createElement('a');
+            a.href = src;
+            a.target = '_blank';
+            a.className = 'group block rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm';
+            a.innerHTML = `<img src="${src}" alt="EcoPulse app screen" loading="lazy" class="w-full h-auto" />`;
+            grid.appendChild(a);
+          });
+        }
+      }
+    })();
+  </script>
+  <!-- Translation script for English/Arabic toggle -->
+  <script>
+    // Translation dictionaries for English and Arabic. Extend as needed.
+    const translations = {
+      en: {
+        nav: {
+          home: 'Home',
+          app: 'App',
+          how: 'How It Works',
+          rewards: 'Rewards',
+          partners: 'Partners',
+          stories: 'Stories',
+          faq: 'FAQ',
+          contact: 'Contact'
+        },
+        hero: {
+          headline: 'Empowering a greener future',
+          sub: 'Join EcoPulse and turn everyday eco actions into tangible rewards. Carpool, drive electric, or reduce home energy and start earning today.',
+          join: 'Join the waitlist',
+          see: 'See the App'
+        }
+      },
+      ar: {
+        nav: {
+          home: 'الرئيسية',
+          app: 'التطبيق',
+          how: 'كيف يعمل',
+          rewards: 'المكافآت',
+          partners: 'الشركاء',
+          stories: 'قصص',
+          faq: 'الأسئلة',
+          contact: 'تواصل'
+        },
+        hero: {
+          headline: 'تمكين مستقبل أكثر اخضراراً',
+          sub: 'انضم إلى EcoPulse وحول أنشطتك اليومية البيئية إلى مكافآت ملموسة. شارك في رحلة العمل الصديق للبيئة، واستفد من رحلات الكاربوول، واستخدام السيارات الكهربائية، أو تقليل استهلاك الطاقة في المنزل وابدأ في الكسب اليوم.',
+          join: 'انضم إلى قائمة الانتظار',
+          see: 'شاهد التطبيق'
+        }
+      }
+    };
+    let currentLang = 'en';
+    // Apply translations to nav, hero and CTA elements
+    function applyTranslations() {
+      const t = translations[currentLang];
+      // Update nav labels
+      document.querySelectorAll('a[data-nav]').forEach(a => {
+        const key = a.getAttribute('data-nav');
+        if (t.nav[key]) a.textContent = t.nav[key];
+      });
+      // Update hero headline
+      const headlineEl = document.getElementById('hero-headline');
+      if (headlineEl && t.hero.headline) headlineEl.textContent = t.hero.headline;
+      // Hero subtitle
+      const subEl = document.querySelector('#hero p[data-hero-sub]');
+      if (subEl && t.hero.sub) subEl.textContent = t.hero.sub;
+      // Join button
+      const joinBtn = document.querySelector('#hero button[data-join]');
+      if (joinBtn && t.hero.join) joinBtn.textContent = t.hero.join;
+      // See link
+      const seeLink = document.querySelector('#hero a[data-see]');
+      if (seeLink && t.hero.see) seeLink.textContent = t.hero.see;
+      // Update HTML dir and lang attributes for RTL support
+      document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.setAttribute('lang', currentLang);
+    }
+    // Toggle language function
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      applyTranslations();
+      // Update button labels
+      const btnDesktop = document.getElementById('langToggle');
+      const btnMobile = document.getElementById('langToggleMobile');
+      if (btnDesktop) btnDesktop.textContent = currentLang === 'en' ? 'العربية' : 'English';
+      if (btnMobile) btnMobile.textContent = currentLang === 'en' ? 'العربية' : 'English';
+    }
+    // Attach listeners to language toggle buttons
+    document.getElementById('langToggle')?.addEventListener('click', toggleLanguage);
+    document.getElementById('langToggleMobile')?.addEventListener('click', () => {
+      // Also close mobile menu after switching language
+      toggleLanguage();
+      const mobileMenuEl = document.getElementById('mobileMenu');
+      if (mobileMenuEl) mobileMenuEl.classList.add('hidden');
+    });
+    window.addEventListener('load', applyTranslations);
+  </script>
+</body>
+</html>
